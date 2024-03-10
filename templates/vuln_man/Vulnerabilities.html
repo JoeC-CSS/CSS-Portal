@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .btn-square {
+        width: 180px; /* Set the width to make the button square */
+        height: 180px; /* Set the height to make the button square */
+        padding: 0; /* Remove padding */
+        margin: 10px; /* Add margin for spacing */
+        font-size: 20px; /* Increase the font size of buttons */
+    }
+
+    /* Colour the buttons according to the text */
+    .btn-primary.Critical {
+        background-color: purple; /* Change the background color for Critical */
+        border-color: purple; /* Change the border color for Critical */
+    }
+
+    .btn-primary.High {
+        background-color: red; /* Change the background color for High */
+        border-color: red; /* Change the border color for High */
+    }
+
+    .btn-primary.Medium {
+        background-color: orange; /* Change the background color for Medium */
+        border-color: orange; /* Change the border color for Medium */
+    }
+
+    .btn-primary.Low {
+        background-color: lightskyblue; /* Change the background color for Low */
+        border-color: lightskyblue; /* Change the border color for Low */
+    }
+
+    .btn-primary.Remediated {
+        background-color: green; /* Change the background color for Informational */
+        border-color: green; /* Change the border color for Informational */
+    }
+
+    .btn-primary.Remediated {
+        background-color: green; /* Change the background color for Remediated */
+        border-color: green; /* Change the border color for Remediated */
+    }
+
+    .badge {
+        font-size: 50px; /* Change the font size of badge text */
+    }
+
+</style>
+
+<h2 class="text-left text-dark p-3">Vulnerability Counts</h2> <!-- Add classes "text-left" and "text-dark" for left-aligned text and dark text color -->
+
+<button type="button" class="btn btn-primary btn-square Critical">
+    Critical<br> <span class="badge">{{ critical_count }}</span>
+</button>
+
+<button type="button" class="btn btn-primary btn-square High">
+    High<br> <span class="badge">{{ high_count }}</span>
+</button>
+
+<button type="button" class="btn btn-primary btn-square Medium">
+    Medium<br> <span class="badge">{{ medium_count }}</span>
+</button>
+
+<button type="button" class="btn btn-primary btn-square Low">
+    Low<br> <span class="badge">{{ low_count }}</span>
+</button>
+
+<button type="button" class="btn btn-primary btn-square Remediated">
+    Remediated<br> <span class="badge">{{ remediated_count }}</span>
+</button>
+
+
+<h2 class="text-left text-dark p-3">Vulnerability Details</h2> <!-- Add classes "text-left" and "text-dark" for left-aligned text and dark text color -->
+<table class="table table-striped"> <!-- Add classes "table" and "table-striped" for Bootstrap styling -->
+    <thead class="thead-dark"> <!-- Add class "thead-dark" for dark header background -->
+        <tr>
+            <th scope="col">Vulnerability Name</th>
+            <th scope="col">Risk Level</th>
+            <th scope="col">Affected Assets</th>
+            <th scope="col">Date Added</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.vuln_name }}</td>
+            <td>{{ item.risk_level }}</td>
+            <td>{{ item.affected_assets }}</td>
+            <td>{{ item.date_added }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

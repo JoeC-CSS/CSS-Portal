@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-dark">Hosts</h1> <!-- Add class "text-dark" for dark text color -->
+    <table class="table table-striped"> <!-- Add classes "table" and "table-striped" for Bootstrap styling -->
+        <thead class="thead-dark"> <!-- Add class "thead-dark" for dark header background -->
+            <tr>
+                <th scope="col">Affected Assets</th> <!-- Header for the "Affected Assets" column -->
+                <!-- Add more <th> elements for additional columns if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in object_list %}
+            <tr>
+                <td>{{ item.affected_assets }}</td>
+                <!-- Add more <td> elements for additional columns if needed -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
